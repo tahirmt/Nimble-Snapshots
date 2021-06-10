@@ -3,6 +3,9 @@ import Foundation
 import Nimble
 import QuartzCore
 import UIKit
+#if SWIFT_PACKAGE
+import Nimble_Snapshots_Swift_Core
+#endif
 
 @objc public protocol Snapshotable {
     var snapshotObject: UIView? { get }
@@ -44,10 +47,10 @@ public class FBSnapshotTest: NSObject {
                                referenceDirectory: String,
                                tolerance: CGFloat,
                                perPixelTolerance: CGFloat,
-                               filename: String,
+                               filename: FileString,
                                identifier: String? = nil) -> Bool {
 
-        let testName = parseFilename(filename: filename)
+        let testName = parseFilename(filename: filename.string)
         let snapshotController: FBSnapshotTestController = FBSnapshotTestController(test: self)
         snapshotController.folderName = testName
         if isDeviceAgnostic {
@@ -121,7 +124,7 @@ public func recordAllSnapshots() {
     switchChecksWithRecords = true
 }
 
-func getDefaultReferenceDirectory(_ sourceFileName: String) -> String {
+func getDefaultReferenceDirectory(_ sourceFileName: FileString) -> String {
     if let globalReference = FBSnapshotTest.sharedInstance.referenceImagesDirectory {
         return globalReference
     }
@@ -134,7 +137,7 @@ func getDefaultReferenceDirectory(_ sourceFileName: String) -> String {
     // then append "/ReferenceImages" and use that.
 
     // Grab the file's path
-    let pathComponents = (sourceFileName as NSString).pathComponents as NSArray
+    let pathComponents = (sourceFileName.string as NSString).pathComponents as NSArray
 
     // Find the directory in the path that ends with a test suffix.
     let testPath = pathComponents.first { component -> Bool in

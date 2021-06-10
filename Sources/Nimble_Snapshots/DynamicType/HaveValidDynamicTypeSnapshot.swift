@@ -1,5 +1,8 @@
 import Nimble
 import UIKit
+#if SWIFT_PACKAGE
+import Nimble_Snapshots_Core
+#endif
 
 public func allContentSizeCategories() -> [UIContentSizeCategory] {
     return [
