@@ -30,8 +30,5 @@ let package = Package(
             ],
             exclude: ["Sources/Nimble_Snapshots/Nimble_Snapshots.xcconfig"]
         ),
-        .testTarget(
-            name: "Nimble-SnapshotsTests",
-            dependencies: ["Nimble_Snapshots"]),
     ]
 )
