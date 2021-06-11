@@ -27,8 +27,7 @@ let package = Package(
                 "Nimble-Snapshots-Core",
                 "Nimble",
                 "FBSnapshotTestCase",
-            ],
-            exclude: ["Sources/Nimble_Snapshots/Nimble_Snapshots.xcconfig"]
+            ]
         ),
     ]
 )
