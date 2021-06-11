@@ -4,6 +4,10 @@
 
 - Nothing yet!
 
+## 9.2.0
+
+- Adds Swift package manager support
+
 ## 9.1.0
 
 - Adds `identifier` to snapshots. See #214 - hfehrmann

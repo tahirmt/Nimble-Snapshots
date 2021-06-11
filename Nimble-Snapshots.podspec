@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "Nimble-Snapshots"
-  s.version      = "9.1.0"
+  s.version      = "9.2.0"
   s.summary      = "Nimble matchers for iOSSnapshotTestCase"
   s.description  = <<-DESC
                    Nimble matchers for iOSSnapshotTestCase. Highly derivative of [Expecta Matchers for iOSSnapshotTestCase](https://github.com/dblock/ios-snapshot-test-case-expecta).
@@ -18,9 +18,12 @@ Pod::Spec.new do |s|
   s.frameworks  = "Foundation", "XCTest", "UIKit"
 
   s.subspec "Core" do |ss|
-    ss.source_files  = "Nimble_Snapshots/*.{h,m,swift}",
-                        "Nimble_Snapshots/DynamicType/*.{swift,m,h}",
-                        "Nimble_Snapshots/DynamicSize/*.{swift}"
+    ss.public_header_files = 'Sources/Nimble_Snapshots/*.h', 'Sources/Nimble-Snapshots-Core/include/*.{h,m,swift}'
+    ss.source_files  = "Sources/Nimble_Snapshots/*.{h,m,swift}",
+                        "Sources/Nimble_Snapshots/DynamicType/*.{swift,m,h}",
+                        "Sources/Nimble_Snapshots/DynamicSize/*.{swift}",
+                        "Sources/Nimble_Snapshots-Swift-Core/*.{h,m,swift}",
+                        "Sources/Nimble-Snapshots-Core/**/*.{h,m,swift}"
     ss.dependency "iOSSnapshotTestCase", "~> 6.0"
     ss.dependency "Nimble"
   end

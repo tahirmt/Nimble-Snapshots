@@ -6,7 +6,7 @@ public final class CurrentTestCaseTracker: NSObject, XCTestObservation {
     @objc(sharedInstance)
     public static let shared = CurrentTestCaseTracker()
 
-    private(set) var currentTestCase: XCTestCase?
+    public private(set) var currentTestCase: XCTestCase?
 
     @objc
     public func testCaseWillStart(_ testCase: XCTestCase) {
@@ -20,7 +20,7 @@ public final class CurrentTestCaseTracker: NSObject, XCTestObservation {
 }
 
 extension XCTestCase {
-    var sanitizedName: String? {
+    public var sanitizedName: String? {
         let fullName = self.name
         let characterSet = CharacterSet(charactersIn: "[]+-")
         #if swift(>=4)
